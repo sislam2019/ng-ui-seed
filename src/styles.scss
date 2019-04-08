@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.card_cstm {
+    background: #EBEBEB;
+    padding: 1.2em;
+    margin: 1.5em;
+    border-radius: 15px;
+}
+
+.alert_cstm {
+    background: #ff4081;
+    color: #fff;
+    padding: .5em 1em;
+    font-weight: 700;
+    font-style: italic;
+    border-radius: 8px;
+    text-align: center;
+}
