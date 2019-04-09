@@ -10,7 +10,6 @@ import { NotificationToastComponent } from '../shared-components/notification-to
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  packages: any;
 
   constructor(public popup: PopupInvokeService) { }
 
