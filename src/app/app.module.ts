@@ -11,16 +11,12 @@ import { AppRoutingModule } from './app-routing.module';
 // 3rd party module
 import { AngularMaterialModule } from './angular-material.module';
 import { AngularKendoModule } from './angular-kendo.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 // Components
 import { AppComponent } from './app.component';
-import { UploadModule } from '@progress/kendo-angular-upload';
-
-
-
-
-
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NotificationToastComponent } from './shared-components/notification-toast/notification-toast.component';
 
 
 
@@ -29,7 +25,8 @@ import { UploadModule } from '@progress/kendo-angular-upload';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    NotificationToastComponent
   ],
   imports: [
     BrowserModule,
@@ -39,12 +36,10 @@ import { UploadModule } from '@progress/kendo-angular-upload';
     AngularKendoModule,
     FormsModule,
     HttpClientModule,
-    NgHttpLoaderModule.forRoot(),
-    UploadModule,
-
-
+    NgHttpLoaderModule.forRoot()
   ],
   providers: [],
+  entryComponents: [NotificationToastComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,44 @@
-<p>
-  dashboard works!
-</p>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page__title">
+      <mat-icon mat-list-icon>list_alt</mat-icon>
+      <span class="title">Dashboard</span>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="card_cstm">
+      <p class="card_title">CallBack Notifications</p>
+      <mat-card>
+        <button mat-stroked-button color="primary" (click)="successCallback()">Success Callback</button>
+        <button mat-stroked-button color="accent" (click)="errorCallback()">Error Callback</button>
+        <button mat-stroked-button (click)="notificationCallback()">General Notification Callback</button>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="card_cstm">
+      <p class="card_title">Packages</p>
+      <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Dependencies
+              </mat-panel-title>
+              <mat-panel-description>
+                List of all package dependencies
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="packages_wrapper">
+              <div *ngFor="let package of packagesJSON" >{{package}}</div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+  </div>
+</div>

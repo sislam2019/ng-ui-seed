@@ -1,0 +1,29 @@
+.response__notification {
+  display: flex;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif!important;
+}
+
+.response__notification > span {
+  flex: 1 1 auto;
+}
+mat-icon {
+  vertical-align: middle;
+  padding: 2px;
+  border: 3px solid;
+  border-radius: 50%;
+}
+
+.success_icon_color {
+  color: #28a745!important;
+};
+.error_icon_color {
+  color:#dc3545!important
+};
+
+
+.billing_submit_notification_btn {
+  border: 1px solid #fff;
+  padding: 1px 6px;
+  margin-left: 10px;
+}
