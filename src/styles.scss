@@ -7,6 +7,12 @@ body {
 
 // Common style for all pages
 // ===========================
+label {
+  color: #828282;
+  font-weight: 700;
+  font-size: 13px;
+}
+
 .page__title {
   display: inline-flex;
   font-size: 17px;
@@ -19,8 +25,9 @@ body {
 .card_cstm {
   background: #EBEBEB;
   padding: 1em;
-  border-radius: 15px;
+  border-radius: 12px;
   margin: 5px 0px;
+  border: 1px solid #EBEBEB;
   .card_header_top {
     display: flex;
     justify-content: space-between;
@@ -36,6 +43,27 @@ body {
     }
   }
 
+}
+
+.card_cstm_noBg {
+  padding: 1em;
+  border-radius: 12px;
+  margin: 5px 0px;
+  border: 1px solid #EBEBEB;
+  .card_header_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 8px;
+    .card_title {
+      color: #828282;
+      font-weight: bold;
+    }
+    .card_top_control {
+      color: #828282;
+    }
+  }
 }
 
 .alert_cstm {

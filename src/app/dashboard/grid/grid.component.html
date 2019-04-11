@@ -1,0 +1,39 @@
+<kendo-grid
+  [kendoGridGroupBinding]="gridData"
+  [pageSize]="state.take"
+  [resizable]="true"
+  [skip]="state.skip"
+  [sortable]="true"
+  [filter]="state.filter"
+  [rowHeight]="35"
+  [height]="440"
+  filterable="menu"
+  [selectable]="true"
+  scrollable="virtual"
+  [kendoGridSelectBy]="'REQUEST_ID'"
+  [selectedKeys]="selectedGridData"
+  (dataStateChange)="dataStateChange($event)">
+  <kendo-grid-checkbox-column showSelectAll="true" width="60"></kendo-grid-checkbox-column>
+  <kendo-grid-column field="ESTIMATE_ID" title="Estimate Id" width="150"></kendo-grid-column>
+  <kendo-grid-column field="ESTIMATE_DESCRIPTION" title="Estimate Desc" width="250">
+  </kendo-grid-column>
+  <kendo-grid-column field="REQUEST_DESC" title="Request Desc" width="250">
+  </kendo-grid-column>
+  <kendo-grid-column field="REQUEST_START_DATE" title="Start" filter="date" width="150"
+    format="{0:d}"></kendo-grid-column>
+  <kendo-grid-column field="REQUEST_END_DATE" title="End"  filter="date" width="150"
+    format="{0:d}"></kendo-grid-column>
+  <kendo-grid-column field="BUYER_NAME" title="Buyer" width="150" ></kendo-grid-column>
+  <kendo-grid-column field="Packages" title="Packages" width="150"></kendo-grid-column>
+  <kendo-grid-column field="POST_ON_SCHEDULE" title="Post On Schedule" width="200">
+  </kendo-grid-column>
+  <kendo-grid-column field="Demos" title="Demos"  width="300">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <div *ngIf="dataItem.Demos">
+          <div *ngFor="let item of dataItem.Demos" >
+            <span class="each_demo">{{item}}</span>
+          </div>
+        </div>
+      </ng-template>
+  </kendo-grid-column>
+</kendo-grid>

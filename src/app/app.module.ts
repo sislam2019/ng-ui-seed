@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NgHttpLoaderModule } from 'ng-http-loader';
@@ -17,6 +17,8 @@ import { AngularKendoModule } from './angular-kendo.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotificationToastComponent } from './shared-components/notification-toast/notification-toast.component';
+import { GridComponent } from './dashboard/grid/grid.component';
+import { DropdownComponent } from './dashboard/dropdown/dropdown.component';
 
 
 
@@ -26,7 +28,9 @@ import { NotificationToastComponent } from './shared-components/notification-toa
   declarations: [
     AppComponent,
     DashboardComponent,
-    NotificationToastComponent
+    NotificationToastComponent,
+    GridComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,7 @@ import { NotificationToastComponent } from './shared-components/notification-toa
     AngularMaterialModule,
     AngularKendoModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgHttpLoaderModule.forRoot()
   ],

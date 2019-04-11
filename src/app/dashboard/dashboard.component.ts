@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PopupInvokeService } from '../_services/popup-invoke.service';
 import { NotificationToastComponent } from '../shared-components/notification-toast/notification-toast.component';
-import { PostService } from '../_services/post.service';
 
-// Kendo Specific
-import { State } from '@progress/kendo-data-query';
-import { IntlService } from '@progress/kendo-angular-intl';
-import { DataStateChangeEvent } from '@progress/kendo-angular-grid';
 
 
 @Component({
@@ -17,35 +12,13 @@ import { DataStateChangeEvent } from '@progress/kendo-angular-grid';
 export class DashboardComponent implements OnInit {
 
   constructor(
-    public popup: PopupInvokeService,
-    public intl: IntlService,
-    public postService: PostService
+    public popup: PopupInvokeService
   ) { }
 
-  // variables declare and initialize
-  // ================================
-  public state: State = {
-    skip: 0,
-    take: 80,
-    // Initial filter descriptor
-    filter: {
-      logic: 'and',
-      filters: []
-    }
-  };
 
-  postData = [];
-  selectedPosts = [];
+
 
   ngOnInit() {
-    this.postService.getPosts().subscribe(posts => {
-      posts.forEach(e => {
-        e.REQUEST_START_DATE = this.intl.parseDate(e.REQUEST_START_DATE);
-        e.REQUEST_END_DATE = this.intl.parseDate(e.REQUEST_END_DATE);
-        e.Demos = e.Demos.split(',');
-      });
-      this.postData = posts;
-    });
   }
 
 
@@ -69,9 +42,6 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  // Grid data change stae for filtering, sorting, grouping
-  public dataStateChange(state: DataStateChangeEvent): void {
-    this.state = state;
-  }
+
 
 }

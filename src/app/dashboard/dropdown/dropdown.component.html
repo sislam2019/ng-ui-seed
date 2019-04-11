@@ -1,0 +1,46 @@
+<div class="kendo_dropdowns">
+
+  <div [ngClass]=" cardBackground ? 'card_cstm' : 'card_cstm_noBg' ">
+    <div class="input-group">
+      <label>AutoComplete</label>
+      <kendo-autocomplete
+        [data]="dropdownData"
+        [valueField]="'ClientName'"
+        [placeholder]="'ie: Capital One'">
+      </kendo-autocomplete>
+    </div>
+  </div>
+
+  <div [ngClass]=" cardBackground ? 'card_cstm' : 'card_cstm_noBg' ">
+    <div class="input-group">
+      <label>ComboBox</label>
+      <kendo-combobox
+        [data]="groupedData"
+        [textField]="'ClientName'"
+        [placeholder]="'ie: Capital One'"
+        [valueField]="'ClientId'">
+      </kendo-combobox>
+    </div>
+  </div>
+
+  <div [ngClass]=" cardBackground ? 'card_cstm' : 'card_cstm_noBg' ">
+    <div class="input-group">
+      <label>MultiSelect</label>
+      <kendo-multiselect
+        [data]="groupedData"
+        [textField]="'ClientName'"
+        [placeholder]="'ie: Capital One'"
+        [valueField]="'ClientId'">
+      </kendo-multiselect>
+    </div>
+  </div>
+
+</div>
+
+<div style="display: flex; justify-content: flex-end; margin: 10px 7px 0px 0px;">
+    <div [ngClass]=" cardBackground ? 'card_cstm' : 'card_cstm_noBg' ">
+        <mat-slide-toggle color="primary" [checked]=true (change)="toggleCardBackground($event)"  >Background</mat-slide-toggle>
+    </div>
+</div>
+
+
