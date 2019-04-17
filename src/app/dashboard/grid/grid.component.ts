@@ -3,10 +3,14 @@ import { GridData } from './../../_models/grid-data';
 import { DataService } from './../../_services/data.service';
 
 // Kendo Specific
-import { State } from '@progress/kendo-data-query';
+import { State, process } from '@progress/kendo-data-query';
 import { IntlService } from '@progress/kendo-angular-intl';
 import { DataStateChangeEvent } from '@progress/kendo-angular-grid';
 
+import { GridDataResult } from '@progress/kendo-angular-grid';
+import { Observable } from 'rxjs/Observable';
+import { GridService } from './grid.service';
+import { map } from 'rxjs/operators/map';
 
 
 @Component({
@@ -15,7 +19,7 @@ import { DataStateChangeEvent } from '@progress/kendo-angular-grid';
   styleUrls: ['./grid.component.scss']
 })
 export class GridComponent implements OnInit {
-   // variables declare and initialize
+  // variables declare and initialize
   // ================================
   public state: State = {
     skip: 0,
@@ -26,29 +30,52 @@ export class GridComponent implements OnInit {
       filters: []
     }
   };
-
+  public view: Observable<GridDataResult>;
   gridData: GridData[] = [];
   selectedGridData: GridData[] = [];
+  public editDataItem: GridData;
+  public isNew: boolean;
 
   constructor(
     public intl: IntlService,
-    public dataService: DataService
+    public dataService: DataService,
+    public gridService: GridService
   ) { }
 
   ngOnInit() {
-    this.dataService.getPosts().subscribe((posts: GridData[]) => {
-      posts.forEach(e => {
-        e.REQUEST_START_DATE = this.intl.parseDate(e.REQUEST_START_DATE);
-        e.REQUEST_END_DATE = this.intl.parseDate(e.REQUEST_END_DATE);
-        e.Demos = e.Demos.split(',');
-      });
-      this.gridData = posts;
-    });
+
+    this.view = this.gridService.pipe(map(data => process(data, this.state)));
+    this.gridService.read();
   }
 
   // Grid data change stae for filtering, sorting, grouping
   public dataStateChange(state: DataStateChangeEvent): void {
     this.state = state;
+    this.gridService.read();
+  }
+
+  public addHandler() {
+    this.editDataItem = new GridData();
+    this.isNew = true;
+  }
+
+  public editHandler({ dataItem }) {
+    this.editDataItem = dataItem;
+    this.isNew = false;
+  }
+
+  public cancelHandler() {
+    this.editDataItem = undefined;
+  }
+
+  public saveHandler(post: GridData) {
+    this.gridService.save(post, this.isNew);
+
+    this.editDataItem = undefined;
+  }
+
+  public removeHandler({dataItem}) {
+      this.gridService.remove(dataItem);
   }
 
 }

@@ -19,6 +19,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotificationToastComponent } from './shared-components/notification-toast/notification-toast.component';
 import { GridComponent } from './dashboard/grid/grid.component';
 import { DropdownComponent } from './dashboard/dropdown/dropdown.component';
+import { DialogsModule } from '@progress/kendo-angular-dialog';
+import { EditGridItemComponent } from './dashboard/grid/edit-grid-item/edit-grid-item.component';
+
 
 
 
@@ -30,7 +33,8 @@ import { DropdownComponent } from './dashboard/dropdown/dropdown.component';
     DashboardComponent,
     NotificationToastComponent,
     GridComponent,
-    DropdownComponent
+    DropdownComponent,
+    EditGridItemComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,8 @@ import { DropdownComponent } from './dashboard/dropdown/dropdown.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgHttpLoaderModule.forRoot()
+    NgHttpLoaderModule.forRoot(),
+    DialogsModule
   ],
   providers: [],
   entryComponents: [NotificationToastComponent],

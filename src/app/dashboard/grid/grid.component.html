@@ -1,5 +1,5 @@
 <kendo-grid
-  [kendoGridGroupBinding]="gridData"
+  [data]="view | async"
   [pageSize]="state.take"
   [resizable]="true"
   [skip]="state.skip"
@@ -12,8 +12,26 @@
   scrollable="virtual"
   [kendoGridSelectBy]="'REQUEST_ID'"
   [selectedKeys]="selectedGridData"
-  (dataStateChange)="dataStateChange($event)">
-  <kendo-grid-checkbox-column showSelectAll="true" width="60"></kendo-grid-checkbox-column>
+  (dataStateChange)="dataStateChange($event)"
+  (edit)="editHandler($event)" (remove)="removeHandler($event)"
+  (add)="addHandler($event)"
+  >
+  <ng-template kendoGridToolbarTemplate>
+    <button mat-stroked-button color="primary" kendoGridAddCommand>
+      <mat-icon>add</mat-icon>Add new
+    </button>
+  </ng-template>
+  <kendo-grid-checkbox-column showSelectAll="true" width="60" [locked]="true"></kendo-grid-checkbox-column>
+  <kendo-grid-command-column title="command" width="220" [locked]="true">
+    <ng-template kendoGridCellTemplate>
+        <button class="minimize_padding" kendoGridEditCommand>
+          <mat-icon color="primary">edit</mat-icon>
+        </button>
+        <button class="minimize_padding" kendoGridRemoveCommand>
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+    </ng-template>
+  </kendo-grid-command-column>
   <kendo-grid-column field="ESTIMATE_ID" title="Estimate Id" width="150"></kendo-grid-column>
   <kendo-grid-column field="ESTIMATE_DESCRIPTION" title="Estimate Desc" width="250">
   </kendo-grid-column>
@@ -36,4 +54,11 @@
         </div>
       </ng-template>
   </kendo-grid-column>
+
 </kendo-grid>
+<app-edit-grid-item
+  [model]="editDataItem" [isNew]="isNew"
+  (save)="saveHandler($event)" (cancel)="cancelHandler()">
+</app-edit-grid-item>
+
+

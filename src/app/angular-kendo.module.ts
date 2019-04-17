@@ -7,7 +7,7 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { ExcelExportModule } from '@progress/kendo-angular-excel-export';
-
+import { DialogsModule } from '@progress/kendo-angular-dialog';
 
 @NgModule({
   declarations: [],
@@ -20,7 +20,8 @@ import { ExcelExportModule } from '@progress/kendo-angular-excel-export';
     DateInputsModule,
     DropDownsModule,
     ExcelExportModule,
-    UploadModule
+    UploadModule,
+    DialogsModule
   ],
   exports: [
     CommonModule,
@@ -31,7 +32,8 @@ import { ExcelExportModule } from '@progress/kendo-angular-excel-export';
     DateInputsModule,
     DropDownsModule,
     ExcelExportModule,
-    UploadModule
+    UploadModule,
+    DialogsModule
   ]
 })
 export class AngularKendoModule { }

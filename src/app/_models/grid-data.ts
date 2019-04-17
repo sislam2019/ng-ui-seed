@@ -1,4 +1,4 @@
-export interface GridData {
+export class GridData {
   ESTIMATE_ID: string;
   ESTIMATE_DESCRIPTION: string;
   REQUEST_ID: string;

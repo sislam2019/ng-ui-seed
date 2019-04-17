@@ -42,6 +42,7 @@ label {
       color: #828282;
     }
   }
+
 }
 
 .card_cstm_noBg {
@@ -81,7 +82,7 @@ label {
 
 button {
   margin: 2px 5px!important;
-  line-height: 27px!important;
+  line-height: 28px!important;
   span {
     // font-size: 13px!important;
     mat-icon {
@@ -119,6 +120,17 @@ mat-accordion {
 .k-widget {
   font-size: 13px!important;
   line-height: 1.5!important;
+  width: 100%;
+}
+
+.k-grid-toolbar {
+  padding: 4px 8px;
+}
+
+kendo-dialog {
+  .k-dialog {
+    max-width: calc(100vw - 650px)!important;
+  }
 }
 
 
